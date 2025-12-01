@@ -31,6 +31,7 @@ import BlogPost from "./pages/BlogPost";
 import Ebooks from "./pages/Ebooks";
 import EbookDownload from "./pages/EbookDownload";
 import SetupSuperAdmin from "./pages/admin/SetupSuperAdmin";
+import UsersManagement from "./pages/admin/UsersManagement";
 
 const queryClient = new QueryClient();
 
@@ -65,12 +66,13 @@ const App = () => (
           <Route path="/showcase" element={<Showcase />} />
           <Route path="/testimonials" element={<Testimonials />} />
           <Route path="/auth" element={<Auth />} />
-          <Route path="/admin/setup" element={<InitialSetup />} />
-          <Route path="/setup-admin" element={<SetupSuperAdmin />} />
+          <Route path="/admin/setup" element={<SetupSuperAdmin />} />
+          <Route path="/admin/initial-setup" element={<InitialSetup />} />
           <Route path="/admin/dashboard" element={<UnifiedDashboard />} />
           <Route path="/admin/old-dashboard" element={<AdminDashboard />} />
           <Route path="/admin/payments" element={<PaymentsDashboard />} />
           <Route path="/admin/testimonials" element={<TestimonialsAdmin />} />
+          <Route path="/admin/users" element={<UsersManagement />} />
           <Route path="/client/dashboard" element={<ClientDashboard />} />
           <Route path="/request/:id" element={<RequestDetail />} />
           <Route path="/tracking" element={<PublicTracking />} />
