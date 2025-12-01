@@ -1,12 +1,22 @@
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2'
 
+const corsHeaders = {
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
+}
+
 Deno.serve(async (req) => {
+  // Handle CORS preflight requests
+  if (req.method === 'OPTIONS') {
+    return new Response(null, { headers: corsHeaders })
+  }
+
   try {
     // Only allow POST requests
     if (req.method !== 'POST') {
       return new Response(JSON.stringify({ error: 'Method not allowed' }), {
         status: 405,
-        headers: { 'Content-Type': 'application/json' },
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
       })
     }
 
@@ -39,7 +49,7 @@ Deno.serve(async (req) => {
       if (!authHeader) {
         return new Response(JSON.stringify({ error: 'Unauthorized - Admin authentication required' }), {
           status: 401,
-          headers: { 'Content-Type': 'application/json' },
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
         })
       }
 
@@ -50,7 +60,7 @@ Deno.serve(async (req) => {
       if (authError || !user) {
         return new Response(JSON.stringify({ error: 'Unauthorized' }), {
           status: 401,
-          headers: { 'Content-Type': 'application/json' },
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
         })
       }
 
@@ -63,9 +73,9 @@ Deno.serve(async (req) => {
         .single()
 
       if (!roleData) {
-        return new Response(JSON.stringify({ error: 'Only admins can create super admin accounts' }), {
+        return new Response(JSON.stringify({ error: 'Only admins can create user accounts' }), {
           status: 403,
-          headers: { 'Content-Type': 'application/json' },
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
         })
       }
     } else {
@@ -73,12 +83,12 @@ Deno.serve(async (req) => {
     }
 
     // Get credentials from request body
-    const { email, password, full_name, phone } = await req.json()
+    const { email, password, full_name, phone, role } = await req.json()
     
     if (!email || !password || !full_name) {
       return new Response(JSON.stringify({ error: 'Email, password, and full name are required' }), {
         status: 400,
-        headers: { 'Content-Type': 'application/json' },
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
       })
     }
 
@@ -94,42 +104,46 @@ Deno.serve(async (req) => {
     })
 
     if (createError) {
+      console.error('Error creating user:', createError)
       return new Response(JSON.stringify({ error: createError.message }), {
         status: 400,
-        headers: { 'Content-Type': 'application/json' },
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
       })
     }
 
-    // Assign admin role
+    // Assign role (admin or client)
+    const userRole = role || 'admin'
     const { error: roleError } = await supabaseAdmin
       .from('user_roles')
       .insert({
         user_id: newUser.user.id,
-        role: 'admin'
+        role: userRole
       })
 
     if (roleError) {
       return new Response(JSON.stringify({ error: roleError.message }), {
         status: 400,
-        headers: { 'Content-Type': 'application/json' },
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
       })
     }
 
     return new Response(
       JSON.stringify({ 
-        message: 'Super admin account created successfully',
-        email: email
+        message: `${userRole === 'admin' ? 'Super admin' : 'User'} account created successfully`,
+        email: email,
+        role: userRole
       }),
       {
         status: 200,
-        headers: { 'Content-Type': 'application/json' },
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
       }
     )
   } catch (error) {
+    console.error('Error in create-super-admin function:', error)
     const errorMessage = error instanceof Error ? error.message : 'An unknown error occurred'
     return new Response(JSON.stringify({ error: errorMessage }), {
       status: 500,
-      headers: { 'Content-Type': 'application/json' },
+      headers: { ...corsHeaders, 'Content-Type': 'application/json' },
     })
   }
 })

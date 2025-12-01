@@ -11,7 +11,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useToast } from "@/hooks/use-toast";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { LogOut, Building2, Briefcase, DollarSign } from "lucide-react";
+import { LogOut, Building2, Briefcase, DollarSign, Users } from "lucide-react";
 
 interface CompanyRequest {
   id: string;
@@ -226,10 +226,16 @@ const UnifiedDashboard = () => {
                 Gérez toutes les demandes et services
               </p>
             </div>
-            <Button variant="outline" onClick={signOut}>
-              <LogOut className="mr-2 h-4 w-4" />
-              Déconnexion
-            </Button>
+            <div className="flex gap-2">
+              <Button variant="outline" onClick={() => navigate('/admin/users')}>
+                <Users className="mr-2 h-4 w-4" />
+                Utilisateurs
+              </Button>
+              <Button variant="outline" onClick={signOut}>
+                <LogOut className="mr-2 h-4 w-4" />
+                Déconnexion
+              </Button>
+            </div>
           </div>
 
           {/* Statistics */}
