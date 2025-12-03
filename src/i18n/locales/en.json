@@ -9,7 +9,12 @@
     "ebooks": "E-books",
     "dashboard": "Dashboard",
     "login": "Login",
-    "logout": "Logout"
+    "logout": "Logout",
+    "regions": "Regions",
+    "showcase": "Companies Created",
+    "testimonials": "Testimonials",
+    "mySpace": "My Space",
+    "createCompany": "Create my company"
   },
   "hero": {
     "title": "Start Your Business in Ivory Coast",
@@ -56,7 +61,9 @@
     "hasAccount": "Already have an account?",
     "createAccount": "Create Account",
     "loginButton": "Log In",
-    "signupButton": "Sign Up"
+    "signupButton": "Sign Up",
+    "welcome": "Welcome",
+    "loginTime": "Login time"
   },
   "tracking": {
     "title": "Track My Application",
@@ -92,6 +99,55 @@
     "filter": "Filter",
     "all": "All",
     "new": "New",
-    "actions": "Actions"
+    "actions": "Actions",
+    "seeMore": "See more",
+    "readMore": "Read more"
+  },
+  "testimonials": {
+    "title": "Testimonials",
+    "subtitle": "Discover what our clients say about their experiences with Legal Form",
+    "companiesCreated": "Companies created",
+    "averageRating": "Average rating",
+    "regionsCovered": "Regions covered",
+    "averageTime": "Average time",
+    "joinClients": "Join our satisfied clients",
+    "trustUs": "Trust Legal Form to create your company with peace of mind",
+    "addTestimonial": "Add testimonial",
+    "yourName": "Your name",
+    "companyName": "Company name",
+    "companyLogo": "Company logo (optional)",
+    "companyWebsite": "Company website (optional)",
+    "yourPhoto": "Your photo",
+    "yourTestimonial": "Your testimonial",
+    "rating": "Rating",
+    "region": "Region",
+    "companyType": "Company type"
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "Our team is here to answer all your questions",
+    "sendMessage": "Send us a message",
+    "formDescription": "Fill out the form below and we'll get back to you quickly",
+    "subject": "Subject",
+    "sendButton": "Send message",
+    "sending": "Sending...",
+    "openingHours": "Opening hours",
+    "mondayFriday": "Monday - Friday",
+    "saturday": "Saturday",
+    "sunday": "Sunday",
+    "closed": "Closed",
+    "whatsappChat": "Chat on WhatsApp"
+  },
+  "dashboard": {
+    "welcome": "Welcome",
+    "loginTime": "Logged in at",
+    "totalRequests": "Total requests",
+    "pending": "Pending",
+    "inProgress": "In progress",
+    "completed": "Completed",
+    "recentRequests": "Recent requests",
+    "viewAll": "View all",
+    "noRequests": "No requests",
+    "createFirst": "Create your first request"
   }
 }

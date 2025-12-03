@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Mail, Phone, MapPin, Send, MessageCircle } from "lucide-react";
+import { Mail, Phone, MapPin, Send, MessageCircle, Clock } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -80,26 +80,26 @@ const Contact = () => {
   const contactInfo = [
     {
       icon: Phone,
-      title: "Téléphone",
+      title: t('form.phone'),
       details: [
-        "+225 07 89 45 12 36",
-        "+225 05 46 78 23 45"
+        "+225 07 89 36 95 16",
+        "+225 05 85 53 14 92"
       ]
     },
     {
       icon: MessageCircle,
       title: "WhatsApp",
       details: [
-        "+225 07 89 45 12 36"
+        "+225 07 89 36 95 16"
       ],
       action: {
-        label: "Discuter sur WhatsApp",
-        url: "https://wa.me/2250789451236"
+        label: t('contact.whatsappChat'),
+        url: "https://wa.me/2250789369516"
       }
     },
     {
       icon: Mail,
-      title: "Email",
+      title: t('form.email'),
       details: [
         "contact@legalform.ci",
         "support@legalform.ci"
@@ -124,10 +124,10 @@ const Contact = () => {
           {/* Hero */}
           <div className="text-center mb-16">
             <h1 className="font-heading font-bold text-4xl sm:text-5xl lg:text-6xl text-foreground mb-6">
-              {t('footer.contact')}
+              {t('contact.title')}
             </h1>
             <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto">
-              Notre équipe est à votre écoute pour répondre à toutes vos questions
+              {t('contact.subtitle')}
             </p>
           </div>
 
@@ -137,7 +137,7 @@ const Contact = () => {
               {contactInfo.map((info, index) => {
                 const Icon = info.icon;
                 return (
-                  <Card key={index}>
+                  <Card key={index} className="hover:shadow-lg transition-shadow">
                     <CardHeader>
                       <div className="flex items-center mb-2">
                         <div className="p-2 rounded-lg bg-primary/10 mr-3">
@@ -157,9 +157,10 @@ const Contact = () => {
                           href={info.action.url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-block mt-2 text-sm text-primary hover:underline"
+                          className="inline-flex items-center mt-3 px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors text-sm font-medium"
                         >
-                          {info.action.label} →
+                          <MessageCircle className="h-4 w-4 mr-2" />
+                          {info.action.label}
                         </a>
                       )}
                     </CardContent>
@@ -169,10 +170,24 @@ const Contact = () => {
 
               <Card className="bg-gradient-hero text-white">
                 <CardContent className="p-6">
-                  <h3 className="font-bold text-xl mb-2">Horaires d'ouverture</h3>
-                  <p className="text-white/90 text-sm mb-2">Lundi - Vendredi: 8h - 18h</p>
-                  <p className="text-white/90 text-sm mb-2">Samedi: 9h - 13h</p>
-                  <p className="text-white/90 text-sm">Dimanche: Fermé</p>
+                  <div className="flex items-center mb-3">
+                    <Clock className="h-5 w-5 mr-2" />
+                    <h3 className="font-bold text-xl">{t('contact.openingHours')}</h3>
+                  </div>
+                  <div className="space-y-2 text-sm">
+                    <div className="flex justify-between">
+                      <span className="text-white/80">{t('contact.mondayFriday')}:</span>
+                      <span className="font-medium">8h - 18h</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-white/80">{t('contact.saturday')}:</span>
+                      <span className="font-medium">9h - 13h</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-white/80">{t('contact.sunday')}:</span>
+                      <span className="font-medium">{t('contact.closed')}</span>
+                    </div>
+                  </div>
                 </CardContent>
               </Card>
             </div>
@@ -180,9 +195,9 @@ const Contact = () => {
             {/* Contact Form */}
             <Card className="lg:col-span-2 border-2">
               <CardHeader>
-                <CardTitle className="text-2xl">Envoyez-nous un message</CardTitle>
+                <CardTitle className="text-2xl">{t('contact.sendMessage')}</CardTitle>
                 <CardDescription>
-                  Remplissez le formulaire ci-dessous et nous vous répondrons rapidement
+                  {t('contact.formDescription')}
                 </CardDescription>
               </CardHeader>
               <CardContent>
@@ -196,6 +211,7 @@ const Contact = () => {
                         onChange={(e) => setFormData({...formData, name: e.target.value})}
                         placeholder="Votre nom"
                         required
+                        className="mt-1"
                       />
                     </div>
                     
@@ -208,6 +224,7 @@ const Contact = () => {
                         onChange={(e) => setFormData({...formData, email: e.target.value})}
                         placeholder="votre@email.com"
                         required
+                        className="mt-1"
                       />
                     </div>
                   </div>
@@ -222,16 +239,18 @@ const Contact = () => {
                         onChange={(e) => setFormData({...formData, phone: e.target.value})}
                         placeholder="+225 XX XX XX XX XX"
                         required
+                        className="mt-1"
                       />
                     </div>
                     
                     <div>
-                      <Label htmlFor="subject">Sujet</Label>
+                      <Label htmlFor="subject">{t('contact.subject')}</Label>
                       <Input
                         id="subject"
                         value={formData.subject}
                         onChange={(e) => setFormData({...formData, subject: e.target.value})}
                         placeholder="Objet de votre message"
+                        className="mt-1"
                       />
                     </div>
                   </div>
@@ -245,12 +264,13 @@ const Contact = () => {
                       placeholder="Décrivez votre projet ou votre demande..."
                       rows={6}
                       required
+                      className="mt-1"
                     />
                   </div>
 
                   <Button type="submit" size="lg" className="w-full" disabled={isSubmitting}>
                     <Send className="mr-2 h-5 w-5" />
-                    {isSubmitting ? "Envoi en cours..." : "Envoyer le message"}
+                    {isSubmitting ? t('contact.sending') : t('contact.sendButton')}
                   </Button>
                 </form>
               </CardContent>

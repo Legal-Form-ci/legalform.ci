@@ -1,23 +1,28 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Menu, X, ChevronDown, LogIn } from "lucide-react";
+import { useTranslation } from "react-i18next";
+import { Menu, X, LogIn, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/hooks/useAuth";
-import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import logo from "@/assets/logo.png";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { user, userRole } = useAuth();
+  const { t, i18n } = useTranslation();
+
+  const changeLanguage = (lng: string) => {
+    i18n.changeLanguage(lng);
+  };
 
   const navigation = [
-    { name: "Accueil", href: "/" },
-    { name: "Nos Services", href: "/services" },
-    { name: "Régions", href: "/regions" },
-    { name: "Entreprises Créées", href: "/showcase" },
-    { name: "Tarifs", href: "/pricing" },
-    { name: "À propos", href: "/about" },
-    { name: "Contact", href: "/contact" },
+    { name: t('nav.home'), href: "/" },
+    { name: t('nav.services'), href: "/services" },
+    { name: t('nav.regions'), href: "/regions" },
+    { name: t('nav.showcase'), href: "/showcase" },
+    { name: t('nav.pricing'), href: "/pricing" },
+    { name: t('nav.about'), href: "/about" },
+    { name: t('nav.contact'), href: "/contact" },
   ];
 
   return (
@@ -46,42 +51,91 @@ const Header = () => {
             ))}
           </div>
 
-          {/* CTA Button */}
+          {/* Desktop CTA + Language */}
           <div className="hidden lg:flex items-center space-x-2">
-            <LanguageSwitcher />
+            {/* Language Switcher */}
+            <div className="flex items-center border rounded-lg overflow-hidden">
+              <button
+                onClick={() => changeLanguage('fr')}
+                className={`px-3 py-2 text-sm font-medium transition-colors ${
+                  i18n.language === 'fr' 
+                    ? 'bg-primary text-primary-foreground' 
+                    : 'bg-background hover:bg-muted'
+                }`}
+              >
+                FR
+              </button>
+              <button
+                onClick={() => changeLanguage('en')}
+                className={`px-3 py-2 text-sm font-medium transition-colors ${
+                  i18n.language === 'en' 
+                    ? 'bg-primary text-primary-foreground' 
+                    : 'bg-background hover:bg-muted'
+                }`}
+              >
+                EN
+              </button>
+            </div>
+            
             {user ? (
               <Link to={userRole === 'admin' ? '/admin/dashboard' : '/client/dashboard'}>
                 <Button variant="outline" className="font-semibold">
-                  Mon Espace
+                  {t('nav.mySpace')}
                 </Button>
               </Link>
             ) : (
               <Link to="/auth">
                 <Button variant="outline" className="font-semibold">
                   <LogIn className="mr-2 h-4 w-4" />
-                  Connexion
+                  {t('nav.login')}
                 </Button>
               </Link>
             )}
             <Link to="/create">
               <Button className="bg-gradient-accent hover:opacity-90 shadow-soft font-semibold">
-                Créer mon entreprise
+                {t('nav.createCompany')}
               </Button>
             </Link>
           </div>
 
-          {/* Mobile menu button */}
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden p-2 rounded-lg text-foreground hover:bg-muted transition-colors"
-          >
-            {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-          </button>
+          {/* Mobile: Language + Menu */}
+          <div className="lg:hidden flex items-center space-x-2">
+            {/* Mobile Language Switcher */}
+            <div className="flex items-center border rounded-lg overflow-hidden">
+              <button
+                onClick={() => changeLanguage('fr')}
+                className={`px-2 py-1.5 text-xs font-medium transition-colors ${
+                  i18n.language === 'fr' 
+                    ? 'bg-primary text-primary-foreground' 
+                    : 'bg-background hover:bg-muted'
+                }`}
+              >
+                FR
+              </button>
+              <button
+                onClick={() => changeLanguage('en')}
+                className={`px-2 py-1.5 text-xs font-medium transition-colors ${
+                  i18n.language === 'en' 
+                    ? 'bg-primary text-primary-foreground' 
+                    : 'bg-background hover:bg-muted'
+                }`}
+              >
+                EN
+              </button>
+            </div>
+            
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="p-2 rounded-lg text-foreground hover:bg-muted transition-colors"
+            >
+              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="lg:hidden py-4 space-y-2 border-t border-border">
+          <div className="lg:hidden py-4 space-y-2 border-t border-border animate-fade-in">
             {navigation.map((item) => (
               <Link
                 key={item.name}
@@ -96,20 +150,20 @@ const Header = () => {
               {user ? (
                 <Link to={userRole === 'admin' ? '/admin/dashboard' : '/client/dashboard'} onClick={() => setIsOpen(false)}>
                   <Button variant="outline" className="w-full font-semibold">
-                    Mon Espace
+                    {t('nav.mySpace')}
                   </Button>
                 </Link>
               ) : (
                 <Link to="/auth" onClick={() => setIsOpen(false)}>
                   <Button variant="outline" className="w-full font-semibold">
                     <LogIn className="mr-2 h-4 w-4" />
-                    Connexion
+                    {t('nav.login')}
                   </Button>
                 </Link>
               )}
               <Link to="/create" onClick={() => setIsOpen(false)}>
                 <Button className="w-full bg-gradient-accent hover:opacity-90 shadow-soft font-semibold">
-                  Créer mon entreprise
+                  {t('nav.createCompany')}
                 </Button>
               </Link>
             </div>
