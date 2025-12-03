@@ -9,7 +9,12 @@
     "ebooks": "E-books",
     "dashboard": "Tableau de bord",
     "login": "Connexion",
-    "logout": "Déconnexion"
+    "logout": "Déconnexion",
+    "regions": "Régions",
+    "showcase": "Entreprises Créées",
+    "testimonials": "Témoignages",
+    "mySpace": "Mon Espace",
+    "createCompany": "Créer mon entreprise"
   },
   "hero": {
     "title": "Créez votre entreprise en Côte d'Ivoire",
@@ -56,7 +61,9 @@
     "hasAccount": "Vous avez déjà un compte ?",
     "createAccount": "Créer un compte",
     "loginButton": "Se connecter",
-    "signupButton": "S'inscrire"
+    "signupButton": "S'inscrire",
+    "welcome": "Bienvenue",
+    "loginTime": "Heure de connexion"
   },
   "tracking": {
     "title": "Suivre mon dossier",
@@ -92,6 +99,55 @@
     "filter": "Filtrer",
     "all": "Tous",
     "new": "Nouveau",
-    "actions": "Actions"
+    "actions": "Actions",
+    "seeMore": "Voir plus",
+    "readMore": "Lire la suite"
+  },
+  "testimonials": {
+    "title": "Témoignages",
+    "subtitle": "Découvrez ce que nos clients disent de leurs expériences avec Legal Form",
+    "companiesCreated": "Entreprises créées",
+    "averageRating": "Note moyenne",
+    "regionsCovered": "Régions couvertes",
+    "averageTime": "Délai moyen",
+    "joinClients": "Rejoignez nos clients satisfaits",
+    "trustUs": "Faites confiance à Legal Form pour créer votre entreprise en toute sérénité",
+    "addTestimonial": "Ajouter un témoignage",
+    "yourName": "Votre nom",
+    "companyName": "Nom de votre entreprise",
+    "companyLogo": "Logo de l'entreprise (optionnel)",
+    "companyWebsite": "Site web de l'entreprise (optionnel)",
+    "yourPhoto": "Votre photo",
+    "yourTestimonial": "Votre témoignage",
+    "rating": "Note",
+    "region": "Région",
+    "companyType": "Type d'entreprise"
+  },
+  "contact": {
+    "title": "Contactez-nous",
+    "subtitle": "Notre équipe est à votre écoute pour répondre à toutes vos questions",
+    "sendMessage": "Envoyez-nous un message",
+    "formDescription": "Remplissez le formulaire ci-dessous et nous vous répondrons rapidement",
+    "subject": "Sujet",
+    "sendButton": "Envoyer le message",
+    "sending": "Envoi en cours...",
+    "openingHours": "Horaires d'ouverture",
+    "mondayFriday": "Lundi - Vendredi",
+    "saturday": "Samedi",
+    "sunday": "Dimanche",
+    "closed": "Fermé",
+    "whatsappChat": "Discuter sur WhatsApp"
+  },
+  "dashboard": {
+    "welcome": "Bienvenue",
+    "loginTime": "Connecté à",
+    "totalRequests": "Total demandes",
+    "pending": "En attente",
+    "inProgress": "En cours",
+    "completed": "Terminées",
+    "recentRequests": "Demandes récentes",
+    "viewAll": "Voir tout",
+    "noRequests": "Aucune demande",
+    "createFirst": "Créez votre première demande"
   }
 }
