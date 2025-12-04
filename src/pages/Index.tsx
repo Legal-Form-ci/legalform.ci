@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { ArrowRight, Building2, FileText, Users, Shield, CheckCircle2, Star, Lightbulb, DollarSign, Palette, GraduationCap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -7,67 +8,99 @@ import Footer from "@/components/Footer";
 import heroBackground from "@/assets/hero-bg.jpg";
 
 const Index = () => {
+  const { t } = useTranslation();
+
   const services = [
     {
       icon: Building2,
-      title: "Création & Structuration",
-      description: "De l'idée au lancement opérationnel",
-      items: ["SARL, SUARL, SNC, SCS, Entreprise Individuelle", "Association, ONG, Coopérative", "Structuration et formalisation de projet", "Publication au journal officiel incluse"],
+      title: t('home.services.creation.title', 'Création d\'entreprise'),
+      description: t('home.services.creation.desc', 'De l\'idée au lancement opérationnel'),
+      items: [
+        "SARL, SARLU, SAS, SASU",
+        "Entreprise Individuelle, Filiale",
+        "Association, ONG, Fondation",
+        "SCOOPS, SCI, GIE"
+      ],
     },
     {
       icon: FileText,
-      title: "Accompagnement juridique",
-      description: "Documents et immatriculations complètes",
-      items: ["RCCM, DFE, NCC, CNPS", "IDU, NTD, Domiciliation", "Contrats, Statuts, Procurations", "Modification de statuts"],
+      title: t('home.services.legal.title', 'Gestion d\'entreprise'),
+      description: t('home.services.legal.desc', 'Modifications et formalités'),
+      items: [
+        "Changement de gérant, cession de part",
+        "Domiciliation d'entreprise",
+        "Rédaction de contrats",
+        "Dépôt de marque"
+      ],
     },
     {
       icon: GraduationCap,
-      title: "Formation & Conseil",
-      description: "Accompagnement stratégique personnalisé",
-      items: ["Formation entrepreneuriale", "Conseil en stratégie d'entreprise", "Structuration de business model", "Accompagnement opérationnel"],
-    },
-    {
-      icon: DollarSign,
-      title: "Financement",
-      description: "Mobilisation et recherche de fonds",
-      items: ["Recherche de financement", "Mobilisation de fonds", "Montage de dossiers", "Mise en relation avec partenaires"],
+      title: t('home.services.support.title', 'Accompagnement'),
+      description: t('home.services.support.desc', 'Accompagnement stratégique'),
+      items: [
+        "Comptabilité et fiscalité",
+        "Formation entrepreneuriale",
+        "Structuration de projet",
+        "Mobilisation de financement"
+      ],
     },
     {
       icon: Palette,
-      title: "Solutions digitales",
-      description: "Identité visuelle et présence en ligne",
-      items: ["Conception de sites web", "Développement d'applications", "Création de logo et identité", "Branding complet"],
+      title: t('home.services.digital.title', 'Solutions digitales'),
+      description: t('home.services.digital.desc', 'Identité visuelle et présence en ligne'),
+      items: [
+        "Conception de sites web",
+        "Développement d'applications",
+        "Création de logo et identité",
+        "Charte graphique et supports"
+      ],
     },
   ];
 
   const steps = [
-    { number: "01", title: "Choisissez votre service", description: "Création, Formation, Financement, Digital..." },
-    { number: "02", title: "Remplissez le formulaire", description: "Informations simples et rapides" },
-    { number: "03", title: "Validation & paiement", description: "Tarifs adaptés selon votre région" },
-    { number: "04", title: "Accompagnement complet", description: "Suivi personnalisé jusqu'au succès" },
+    { 
+      number: "01", 
+      title: t('home.steps.step1.title', 'Choisissez votre service'), 
+      description: t('home.steps.step1.desc', 'Digitalisation complète du processus') 
+    },
+    { 
+      number: "02", 
+      title: t('home.steps.step2.title', 'Remplissez le formulaire'), 
+      description: t('home.steps.step2.desc', 'Informations simples et rapides') 
+    },
+    { 
+      number: "03", 
+      title: t('home.steps.step3.title', 'Validation & paiement'), 
+      description: t('home.steps.step3.desc', 'Tarifs adaptés selon votre région') 
+    },
+    { 
+      number: "04", 
+      title: t('home.steps.step4.title', 'Suivi jusqu\'à tous vos documents'), 
+      description: t('home.steps.step4.desc', 'Suivi personnalisé') 
+    },
   ];
 
   const testimonials = [
     {
-      name: "KOFFI Inocent",
+      name: "KOFFI Innocent",
       company: "AGRICAPITAL SARL",
       region: "Daloa",
       rating: 5,
-      comment: "Service rapide et professionnel. L'équipe Legal Form a été disponible à chaque étape.",
+      comment: t('home.testimonials.koffi', 'Service rapide et professionnel. L\'équipe Legal Form a été disponible à chaque étape.'),
     },
     {
       name: "KOUASSI Marie",
       company: "TECHNOVATE SARL",
       region: "Abidjan",
       rating: 5,
-      comment: "J'ai créé mon entreprise en moins d'une semaine. Excellent accompagnement !",
+      comment: t('home.testimonials.kouassi', 'J\'ai créé mon entreprise en peu de temps. Excellent accompagnement !'),
     },
     {
       name: "DIALLO Amadou",
-      company: "BATIR CI SA",
+      company: "BATIR CI SARL",
       region: "Bouaké",
       rating: 5,
-      comment: "Processus simplifié, équipe compétente. Je recommande vivement Legal Form.",
+      comment: t('home.testimonials.diallo', 'Processus simplifié, équipe compétente. Je recommande vivement Legal Form.'),
     },
   ];
 
@@ -96,30 +129,31 @@ const Index = () => {
         <div className="container relative mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl">
             <h1 className="font-heading font-bold text-4xl sm:text-5xl lg:text-6xl xl:text-7xl text-white mb-6 leading-tight animate-in fade-in slide-in-from-bottom-4 duration-1000">
-              Transformez votre idée en{" "}
-              <span className="text-accent">entreprise solide</span>
+              {t('home.hero.title', 'Transformez votre idée en une')}{" "}
+              <span className="text-accent">{t('home.hero.highlight', 'entreprise viable')}</span>
             </h1>
-            <p className="text-lg sm:text-xl lg:text-2xl text-white/90 mb-8 max-w-2xl animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-150">
-              Accompagnement complet de la structuration au financement, en passant par la création juridique et l'identité digitale
+            <p className="text-lg sm:text-xl lg:text-2xl text-white/90 mb-8 max-w-3xl animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-150">
+              {t('home.hero.subtitle', 'Créer, gérer et accompagner votre entreprise en Côte d\'Ivoire et partout dans le monde.')}
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 mb-12 animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-300">
               <Link to="/create">
                 <Button size="lg" className="bg-accent hover:bg-accent/90 text-white shadow-strong text-lg px-8 py-6 h-auto font-semibold group">
-                  Créer mon entreprise
+                  {t('home.hero.cta', 'Créer mon entreprise')}
                   <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </Link>
               <Link to="/services">
                 <Button size="lg" variant="outline" className="border-2 border-accent text-accent hover:bg-accent hover:text-white text-lg px-8 py-6 h-auto font-semibold">
-                  Nos services
+                  {t('home.hero.services', 'Nos services')}
                 </Button>
               </Link>
             </div>
 
             <div className="inline-flex items-center justify-center bg-accent text-white rounded-full px-8 py-4 shadow-strong animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-500">
-              <span className="text-3xl font-bold">À partir de 150 000 FCFA</span>
-              <span className="ml-3 text-lg opacity-90">selon la région</span>
+              <span className="text-2xl sm:text-3xl font-bold">{t('home.hero.priceAbidjan', 'Abidjan: 180 000 FCFA')}</span>
+              <span className="mx-3 text-lg">|</span>
+              <span className="text-2xl sm:text-3xl font-bold">{t('home.hero.priceInterior', 'Intérieur: à partir de 150 000 FCFA')}</span>
             </div>
           </div>
         </div>
@@ -130,14 +164,14 @@ const Index = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="font-heading font-bold text-3xl sm:text-4xl lg:text-5xl text-foreground mb-4">
-              Nos Services
+              {t('home.services.title', 'Nos Services')}
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Votre partenaire stratégique pour entreprendre en toute sécurité avec une équipe d'experts
+              {t('home.services.subtitle', 'Créer, gérer et accompagner votre entreprise en Côte d\'Ivoire et partout dans le monde.')}
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
             {services.map((service, index) => {
               const Icon = service.icon;
               return (
@@ -171,7 +205,7 @@ const Index = () => {
           <div className="text-center mt-12">
             <Link to="/services">
               <Button size="lg" variant="outline" className="border-2 border-primary text-primary hover:bg-primary hover:text-white">
-                Voir tous nos services
+                {t('home.services.viewAll', 'Voir tous nos services')}
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
             </Link>
@@ -184,10 +218,10 @@ const Index = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="font-heading font-bold text-3xl sm:text-4xl lg:text-5xl text-foreground mb-4">
-              Comment ça marche ?
+              {t('home.steps.title', 'Comment ça marche ?')}
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Créez votre entreprise en 4 étapes simples
+              {t('home.steps.subtitle', 'Créez votre entreprise en 4 étapes simples')}
             </p>
           </div>
 
@@ -213,7 +247,7 @@ const Index = () => {
           <div className="text-center mt-12">
             <Link to="/create">
               <Button size="lg" className="bg-gradient-accent hover:opacity-90 shadow-soft text-lg px-8 py-6 h-auto font-semibold">
-                Commencer maintenant
+                {t('home.steps.cta', 'Commencer maintenant')}
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
             </Link>
@@ -226,16 +260,16 @@ const Index = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="font-heading font-bold text-3xl sm:text-4xl lg:text-5xl text-foreground mb-4">
-              Entreprises Créées
+              {t('home.testimonials.title', 'Entreprises Créées')}
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Découvrez les témoignages de nos clients satisfaits
+              {t('home.testimonials.subtitle', 'Découvrez les témoignages de nos clients satisfaits')}
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
             {testimonials.map((testimonial, index) => (
-              <Card key={index} className="border-2">
+              <Card key={index} className="border-2 hover:shadow-lg transition-shadow">
                 <CardContent className="p-6">
                   <div className="flex items-center mb-3">
                     {[...Array(testimonial.rating)].map((_, i) => (
@@ -256,9 +290,9 @@ const Index = () => {
           </div>
 
           <div className="text-center mt-12">
-            <Link to="/showcases">
+            <Link to="/showcase">
               <Button size="lg" variant="outline" className="border-2 border-primary text-primary hover:bg-primary hover:text-white">
-                Voir toutes les entreprises créées
+                {t('home.testimonials.viewAll', 'Voir toutes les entreprises créées')}
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
             </Link>

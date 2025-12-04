@@ -1,8 +1,11 @@
 import { Link } from "react-router-dom";
-import { Facebook, Twitter, Linkedin, Mail, Phone, MapPin } from "lucide-react";
+import { useTranslation } from "react-i18next";
+import { Facebook, Twitter, Linkedin, Mail, Phone, MapPin, MessageCircle } from "lucide-react";
 import logo from "@/assets/logo.png";
 
 const Footer = () => {
+  const { t } = useTranslation();
+
   const services = [
     "Création d'entreprise",
     "Création d'association",
@@ -35,16 +38,16 @@ const Footer = () => {
               <span className="font-heading font-bold text-xl text-primary">Legal Form</span>
             </div>
             <p className="text-sm text-muted-foreground mb-4">
-              Votre partenaire de confiance pour créer et développer votre entreprise en Côte d'Ivoire.
+              {t('footer.description', 'Votre partenaire de confiance pour créer et développer votre entreprise en Côte d\'Ivoire.')}
             </p>
             <div className="flex space-x-3">
-              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+              <a href="https://facebook.com/legalformci" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
                 <Facebook className="h-5 w-5" />
               </a>
-              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+              <a href="https://twitter.com/legalformci" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
                 <Twitter className="h-5 w-5" />
               </a>
-              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+              <a href="https://linkedin.com/company/legalformci" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
                 <Linkedin className="h-5 w-5" />
               </a>
             </div>
@@ -52,7 +55,7 @@ const Footer = () => {
 
           {/* Services */}
           <div>
-            <h3 className="font-heading font-semibold text-foreground mb-4">Nos Services</h3>
+            <h3 className="font-heading font-semibold text-foreground mb-4">{t('footer.services', 'Nos Services')}</h3>
             <ul className="space-y-2">
               {services.map((service) => (
                 <li key={service}>
@@ -69,7 +72,7 @@ const Footer = () => {
 
           {/* Regions */}
           <div>
-            <h3 className="font-heading font-semibold text-foreground mb-4">Nos Régions</h3>
+            <h3 className="font-heading font-semibold text-foreground mb-4">{t('footer.regions', 'Nos Régions')}</h3>
             <ul className="space-y-2">
               {regions.map((region) => (
                 <li key={region}>
@@ -86,22 +89,44 @@ const Footer = () => {
 
           {/* Contact */}
           <div>
-            <h3 className="font-heading font-semibold text-foreground mb-4">Contact</h3>
+            <h3 className="font-heading font-semibold text-foreground mb-4">{t('footer.contact', 'Contact')}</h3>
             <ul className="space-y-3">
               <li className="flex items-start space-x-3">
                 <Phone className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
                 <div className="text-sm text-muted-foreground">
                   <div>+225 07 09 67 79 25</div>
-                  <div>+225 05 05 66 31 31</div>
+                  <div>+225 01 71 50 04 73</div>
                 </div>
               </li>
               <li className="flex items-start space-x-3">
+                <MessageCircle className="h-5 w-5 text-green-500 flex-shrink-0 mt-0.5" />
+                <a 
+                  href="https://wa.me/2250709677925" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-sm text-muted-foreground hover:text-green-500 transition-colors"
+                >
+                  WhatsApp: +225 07 09 67 79 25
+                </a>
+              </li>
+              <li className="flex items-start space-x-3">
                 <Mail className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                <span className="text-sm text-muted-foreground">entreprise@legalform.ci</span>
+                <div className="text-sm text-muted-foreground">
+                  <div>contact@legalform.ci</div>
+                  <div>entreprise@legalform.ci</div>
+                </div>
               </li>
               <li className="flex items-start space-x-3">
                 <MapPin className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                <span className="text-sm text-muted-foreground">Cocody Angré 8e Tranche, Abidjan, Côte d'Ivoire</span>
+                <a 
+                  href="https://maps.app.goo.gl/HNxpTdi9dZptmf8G9"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                >
+                  BPM 387, Grand-Bassam, ANCIENNE CIE<br />
+                  Côte d'Ivoire
+                </a>
               </li>
             </ul>
           </div>
@@ -111,14 +136,14 @@ const Footer = () => {
         <div className="mt-12 pt-8 border-t border-border">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <p className="text-sm text-muted-foreground">
-              © {new Date().getFullYear()} Legal Form. Tous droits réservés.
+              © {new Date().getFullYear()} Legal Form. {t('footer.rights', 'Tous droits réservés.')}
             </p>
             <div className="flex space-x-6">
               <Link to="/privacy" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                Confidentialité
+                {t('footer.privacy', 'Confidentialité')}
               </Link>
               <Link to="/terms" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                Conditions
+                {t('footer.terms', 'Conditions')}
               </Link>
             </div>
           </div>
