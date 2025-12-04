@@ -82,19 +82,19 @@ const Contact = () => {
       icon: Phone,
       title: t('form.phone'),
       details: [
-        "+225 07 89 36 95 16",
-        "+225 05 85 53 14 92"
+        "+225 07 09 67 79 25",
+        "+225 01 71 50 04 73"
       ]
     },
     {
       icon: MessageCircle,
       title: "WhatsApp",
       details: [
-        "+225 07 89 36 95 16"
+        "+225 07 09 67 79 25"
       ],
       action: {
         label: t('contact.whatsappChat'),
-        url: "https://wa.me/2250789369516"
+        url: "https://wa.me/2250709677925"
       }
     },
     {
@@ -102,15 +102,15 @@ const Contact = () => {
       title: t('form.email'),
       details: [
         "contact@legalform.ci",
-        "support@legalform.ci"
+        "entreprise@legalform.ci"
       ]
     },
     {
       icon: MapPin,
       title: "Adresse",
       details: [
-        "Abidjan, Cocody Riviera Palmeraie",
-        "Côte d'Ivoire"
+        "BPM 387, Grand-Bassam",
+        "ANCIENNE CIE, Côte d'Ivoire"
       ]
     }
   ];

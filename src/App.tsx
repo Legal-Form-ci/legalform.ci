@@ -5,6 +5,8 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as SonnerToaster } from "@/components/ui/sonner";
 import { logPageView } from "@/utils/analytics";
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 import Index from "./pages/Index";
 import Services from "./pages/Services";
 import Create from "./pages/Create";
@@ -59,13 +61,19 @@ const App = () => (
           <Route path="/services/additional" element={<AdditionalServices />} />
           <Route path="/service-request" element={<ServiceRequest />} />
           <Route path="/create" element={<Create />} />
+          <Route path="/creation" element={<Create />} />
           <Route path="/regions" element={<Regions />} />
           <Route path="/pricing" element={<Pricing />} />
+          <Route path="/tarifs" element={<Pricing />} />
           <Route path="/about" element={<About />} />
+          <Route path="/a-propos" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/showcase" element={<Showcase />} />
+          <Route path="/entreprises-creees" element={<Showcase />} />
           <Route path="/testimonials" element={<Testimonials />} />
+          <Route path="/temoignages" element={<Testimonials />} />
           <Route path="/auth" element={<Auth />} />
+          <Route path="/connexion" element={<Auth />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/reset-password" element={<ResetPassword />} />
           <Route path="/admin/setup" element={<SetupSuperAdmin />} />
@@ -76,8 +84,10 @@ const App = () => (
           <Route path="/admin/testimonials" element={<TestimonialsAdmin />} />
           <Route path="/admin/users" element={<UsersManagement />} />
           <Route path="/client/dashboard" element={<ClientDashboard />} />
+          <Route path="/mon-espace" element={<ClientDashboard />} />
           <Route path="/request/:id" element={<RequestDetail />} />
           <Route path="/tracking" element={<PublicTracking />} />
+          <Route path="/suivi" element={<PublicTracking />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:slug" element={<BlogPost />} />
           <Route path="/ebooks" element={<Ebooks />} />
@@ -88,6 +98,8 @@ const App = () => (
         <Toaster />
         <SonnerToaster />
       </BrowserRouter>
+      <Analytics />
+      <SpeedInsights />
     </TooltipProvider>
   </QueryClientProvider>
 );
