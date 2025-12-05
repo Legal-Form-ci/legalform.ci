@@ -16,16 +16,16 @@ const Index = () => {
       title: t('home.services.creation.title', 'Création d\'entreprise'),
       description: t('home.services.creation.desc', 'De l\'idée au lancement opérationnel'),
       items: [
-        "SARL, SARLU, SAS, SASU",
-        "Entreprise Individuelle, Filiale",
+        "Entreprise Individuelle, SARL, SARLU",
+        "SAS, SASU, Filiale",
         "Association, ONG, Fondation",
         "SCOOPS, SCI, GIE"
       ],
     },
     {
       icon: FileText,
-      title: t('home.services.legal.title', 'Gestion d\'entreprise'),
-      description: t('home.services.legal.desc', 'Modifications et formalités'),
+      title: t('home.services.management.title', 'Gestion d\'entreprise'),
+      description: t('home.services.management.desc', 'Modifications et formalités'),
       items: [
         "Changement de gérant, cession de part",
         "Domiciliation d'entreprise",
@@ -45,14 +45,14 @@ const Index = () => {
       ],
     },
     {
-      icon: Palette,
-      title: t('home.services.digital.title', 'Solutions digitales'),
-      description: t('home.services.digital.desc', 'Identité visuelle et présence en ligne'),
+      icon: FileText,
+      title: t('home.services.other.title', 'Autres formalités'),
+      description: t('home.services.other.desc', 'Démarches administratives'),
       items: [
-        "Conception de sites web",
-        "Développement d'applications",
-        "Création de logo et identité",
-        "Charte graphique et supports"
+        "Immobilier, Agrément FDFP",
+        "Agrément agent immobilier",
+        "Transport, Carte transporteur",
+        "Formalités ACD"
       ],
     },
   ];
@@ -61,7 +61,7 @@ const Index = () => {
     { 
       number: "01", 
       title: t('home.steps.step1.title', 'Choisissez votre service'), 
-      description: t('home.steps.step1.desc', 'Digitalisation complète du processus') 
+      description: t('home.steps.step1.desc', 'Digitalisation') 
     },
     { 
       number: "02", 
@@ -93,7 +93,7 @@ const Index = () => {
       company: "TECHNOVATE SARL",
       region: "Abidjan",
       rating: 5,
-      comment: t('home.testimonials.kouassi', 'J\'ai créé mon entreprise en peu de temps. Excellent accompagnement !'),
+      comment: t('home.testimonials.kouassi', 'J\'ai créé mon entreprise en peu de temps.'),
     },
     {
       name: "DIALLO Amadou",
@@ -136,7 +136,7 @@ const Index = () => {
               {t('home.hero.subtitle', 'Créer, gérer et accompagner votre entreprise en Côte d\'Ivoire et partout dans le monde.')}
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-4 mb-12 animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-300">
+            <div className="flex flex-col sm:flex-row gap-4 animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-300">
               <Link to="/create">
                 <Button size="lg" className="bg-accent hover:bg-accent/90 text-white shadow-strong text-lg px-8 py-6 h-auto font-semibold group">
                   {t('home.hero.cta', 'Créer mon entreprise')}
@@ -144,16 +144,10 @@ const Index = () => {
                 </Button>
               </Link>
               <Link to="/services">
-                <Button size="lg" variant="outline" className="border-2 border-accent text-accent hover:bg-accent hover:text-white text-lg px-8 py-6 h-auto font-semibold">
+                <Button size="lg" variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-primary text-lg px-8 py-6 h-auto font-semibold">
                   {t('home.hero.services', 'Nos services')}
                 </Button>
               </Link>
-            </div>
-
-            <div className="inline-flex items-center justify-center bg-accent text-white rounded-full px-8 py-4 shadow-strong animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-500">
-              <span className="text-2xl sm:text-3xl font-bold">{t('home.hero.priceAbidjan', 'Abidjan: 180 000 FCFA')}</span>
-              <span className="mx-3 text-lg">|</span>
-              <span className="text-2xl sm:text-3xl font-bold">{t('home.hero.priceInterior', 'Intérieur: à partir de 150 000 FCFA')}</span>
             </div>
           </div>
         </div>
