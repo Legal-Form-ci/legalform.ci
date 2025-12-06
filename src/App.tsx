@@ -21,6 +21,10 @@ import AdminDashboard from "./pages/admin/Dashboard";
 import TestimonialsAdmin from "./pages/admin/TestimonialsAdmin";
 import PaymentsDashboard from "./pages/admin/PaymentsDashboard";
 import UnifiedDashboard from "./pages/admin/UnifiedDashboard";
+import NewDashboard from "./pages/admin/NewDashboard";
+import CompaniesManagement from "./pages/admin/CompaniesManagement";
+import TeamManagement from "./pages/admin/TeamManagement";
+import AdminSettings from "./pages/admin/AdminSettings";
 import InitialSetup from "./pages/admin/InitialSetup";
 import ClientDashboard from "./pages/client/Dashboard";
 import AdditionalServices from "./pages/AdditionalServices";
@@ -78,8 +82,11 @@ const App = () => (
           <Route path="/reset-password" element={<ResetPassword />} />
           <Route path="/admin/setup" element={<SetupSuperAdmin />} />
           <Route path="/admin/initial-setup" element={<InitialSetup />} />
-          <Route path="/admin/dashboard" element={<UnifiedDashboard />} />
-          <Route path="/admin/old-dashboard" element={<AdminDashboard />} />
+          <Route path="/admin/dashboard" element={<NewDashboard />} />
+          <Route path="/admin/old-dashboard" element={<UnifiedDashboard />} />
+          <Route path="/admin/companies" element={<CompaniesManagement />} />
+          <Route path="/admin/team" element={<TeamManagement />} />
+          <Route path="/admin/settings" element={<AdminSettings />} />
           <Route path="/admin/payments" element={<PaymentsDashboard />} />
           <Route path="/admin/testimonials" element={<TestimonialsAdmin />} />
           <Route path="/admin/users" element={<UsersManagement />} />
