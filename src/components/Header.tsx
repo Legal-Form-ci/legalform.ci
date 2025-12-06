@@ -31,9 +31,9 @@ const Header = () => {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-3 group">
-            <img src={logo} alt="Legal Form" className="h-12 w-12 transition-transform group-hover:scale-105" />
+            <img src={logo} alt="Légal Form" className="h-12 w-12 transition-transform group-hover:scale-105" />
             <div className="flex flex-col">
-              <span className="font-heading font-bold text-xl text-primary">Legal Form</span>
+              <span className="font-heading font-bold text-xl text-primary">Légal Form</span>
               <span className="text-xs text-muted-foreground">Création d'entreprise</span>
             </div>
           </Link>

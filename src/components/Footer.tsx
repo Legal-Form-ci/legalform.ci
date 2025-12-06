@@ -34,8 +34,8 @@ const Footer = () => {
           {/* About */}
           <div>
             <div className="flex items-center space-x-3 mb-4">
-              <img src={logo} alt="Legal Form" className="h-10 w-10" />
-              <span className="font-heading font-bold text-xl text-primary">Legal Form</span>
+              <img src={logo} alt="Légal Form" className="h-10 w-10" />
+              <span className="font-heading font-bold text-xl text-primary">Légal Form</span>
             </div>
             <p className="text-sm text-muted-foreground mb-4">
               {t('footer.description', 'Votre partenaire de confiance pour créer et développer votre entreprise en Côte d\'Ivoire.')}
@@ -136,7 +136,7 @@ const Footer = () => {
         <div className="mt-12 pt-8 border-t border-border">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <p className="text-sm text-muted-foreground">
-              © {new Date().getFullYear()} Legal Form. {t('footer.rights', 'Tous droits réservés.')}
+              © {new Date().getFullYear()} Légal Form. {t('footer.rights', 'Tous droits réservés.')}
             </p>
             <div className="flex space-x-6">
               <Link to="/privacy" className="text-sm text-muted-foreground hover:text-primary transition-colors">

@@ -14,6 +14,42 @@ export type Database = {
   }
   public: {
     Tables: {
+      action_history: {
+        Row: {
+          action_type: string
+          created_at: string | null
+          description: string | null
+          id: string
+          metadata: Json | null
+          performed_by: string
+          performed_by_role: string
+          request_id: string
+          request_type: string
+        }
+        Insert: {
+          action_type: string
+          created_at?: string | null
+          description?: string | null
+          id?: string
+          metadata?: Json | null
+          performed_by: string
+          performed_by_role: string
+          request_id: string
+          request_type: string
+        }
+        Update: {
+          action_type?: string
+          created_at?: string | null
+          description?: string | null
+          id?: string
+          metadata?: Json | null
+          performed_by?: string
+          performed_by_role?: string
+          request_id?: string
+          request_type?: string
+        }
+        Relationships: []
+      }
       admin_audit_log: {
         Row: {
           action_type: string
@@ -143,9 +179,13 @@ export type Database = {
           company_request_id: string
           created_at: string
           email: string | null
+          filiation_document_url: string | null
           full_name: string
+          has_filiation: boolean | null
           id: string
           id_number: string | null
+          id_recto_url: string | null
+          id_verso_url: string | null
           is_manager: boolean | null
           marital_regime: string | null
           marital_status: string | null
@@ -167,9 +207,13 @@ export type Database = {
           company_request_id: string
           created_at?: string
           email?: string | null
+          filiation_document_url?: string | null
           full_name: string
+          has_filiation?: boolean | null
           id?: string
           id_number?: string | null
+          id_recto_url?: string | null
+          id_verso_url?: string | null
           is_manager?: boolean | null
           marital_regime?: string | null
           marital_status?: string | null
@@ -191,9 +235,13 @@ export type Database = {
           company_request_id?: string
           created_at?: string
           email?: string | null
+          filiation_document_url?: string | null
           full_name?: string
+          has_filiation?: boolean | null
           id?: string
           id_number?: string | null
+          id_recto_url?: string | null
+          id_verso_url?: string | null
           is_manager?: boolean | null
           marital_regime?: string | null
           marital_status?: string | null
@@ -286,6 +334,7 @@ export type Database = {
           email: string
           estimated_price: number | null
           id: string
+          payment_status: string | null
           phone: string
           region: string
           status: string | null
@@ -311,6 +360,7 @@ export type Database = {
           email: string
           estimated_price?: number | null
           id?: string
+          payment_status?: string | null
           phone: string
           region: string
           status?: string | null
@@ -336,6 +386,7 @@ export type Database = {
           email?: string
           estimated_price?: number | null
           id?: string
+          payment_status?: string | null
           phone?: string
           region?: string
           status?: string | null
@@ -501,6 +552,93 @@ export type Database = {
           slug?: string
           title?: string
           updated_at?: string | null
+        }
+        Relationships: []
+      }
+      internal_users: {
+        Row: {
+          created_at: string | null
+          email: string
+          full_name: string
+          id: string
+          is_active: boolean | null
+          phone: string | null
+          role: Database["public"]["Enums"]["internal_role"]
+          updated_at: string | null
+          user_id: string
+        }
+        Insert: {
+          created_at?: string | null
+          email: string
+          full_name: string
+          id?: string
+          is_active?: boolean | null
+          phone?: string | null
+          role?: Database["public"]["Enums"]["internal_role"]
+          updated_at?: string | null
+          user_id: string
+        }
+        Update: {
+          created_at?: string | null
+          email?: string
+          full_name?: string
+          id?: string
+          is_active?: boolean | null
+          phone?: string | null
+          role?: Database["public"]["Enums"]["internal_role"]
+          updated_at?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
+      payments: {
+        Row: {
+          amount: number
+          created_at: string | null
+          currency: string | null
+          fedapay_transaction_id: string | null
+          id: string
+          metadata: Json | null
+          paid_at: string | null
+          payment_method: string | null
+          request_id: string
+          request_type: string
+          status: string
+          transaction_id: string | null
+          updated_at: string | null
+          user_id: string
+        }
+        Insert: {
+          amount: number
+          created_at?: string | null
+          currency?: string | null
+          fedapay_transaction_id?: string | null
+          id?: string
+          metadata?: Json | null
+          paid_at?: string | null
+          payment_method?: string | null
+          request_id: string
+          request_type: string
+          status?: string
+          transaction_id?: string | null
+          updated_at?: string | null
+          user_id: string
+        }
+        Update: {
+          amount?: number
+          created_at?: string | null
+          currency?: string | null
+          fedapay_transaction_id?: string | null
+          id?: string
+          metadata?: Json | null
+          paid_at?: string | null
+          payment_method?: string | null
+          request_id?: string
+          request_type?: string
+          status?: string
+          transaction_id?: string | null
+          updated_at?: string | null
+          user_id?: string
         }
         Relationships: []
       }
@@ -720,6 +858,122 @@ export type Database = {
         }
         Relationships: []
       }
+      site_settings: {
+        Row: {
+          category: string | null
+          id: string
+          key: string
+          updated_at: string | null
+          updated_by: string | null
+          value: Json
+        }
+        Insert: {
+          category?: string | null
+          id?: string
+          key: string
+          updated_at?: string | null
+          updated_by?: string | null
+          value: Json
+        }
+        Update: {
+          category?: string | null
+          id?: string
+          key?: string
+          updated_at?: string | null
+          updated_by?: string | null
+          value?: Json
+        }
+        Relationships: []
+      }
+      tickets: {
+        Row: {
+          assigned_to: string | null
+          closed_at: string | null
+          closed_by: string | null
+          created_at: string | null
+          id: string
+          notes_internal: string | null
+          priority: string | null
+          request_id: string
+          request_type: string
+          status: string
+          updated_at: string | null
+        }
+        Insert: {
+          assigned_to?: string | null
+          closed_at?: string | null
+          closed_by?: string | null
+          created_at?: string | null
+          id?: string
+          notes_internal?: string | null
+          priority?: string | null
+          request_id: string
+          request_type: string
+          status?: string
+          updated_at?: string | null
+        }
+        Update: {
+          assigned_to?: string | null
+          closed_at?: string | null
+          closed_by?: string | null
+          created_at?: string | null
+          id?: string
+          notes_internal?: string | null
+          priority?: string | null
+          request_id?: string
+          request_type?: string
+          status?: string
+          updated_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "tickets_assigned_to_fkey"
+            columns: ["assigned_to"]
+            isOneToOne: false
+            referencedRelation: "internal_users"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      user_notifications: {
+        Row: {
+          created_at: string | null
+          id: string
+          is_read: boolean | null
+          link: string | null
+          message: string
+          request_id: string | null
+          request_type: string | null
+          title: string
+          type: string | null
+          user_id: string
+        }
+        Insert: {
+          created_at?: string | null
+          id?: string
+          is_read?: boolean | null
+          link?: string | null
+          message: string
+          request_id?: string | null
+          request_type?: string | null
+          title: string
+          type?: string | null
+          user_id: string
+        }
+        Update: {
+          created_at?: string | null
+          id?: string
+          is_read?: boolean | null
+          link?: string | null
+          message?: string
+          request_id?: string | null
+          request_type?: string | null
+          title?: string
+          type?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
       user_roles: {
         Row: {
           id: string
@@ -763,6 +1017,12 @@ export type Database = {
     }
     Enums: {
       app_role: "admin" | "client"
+      internal_role:
+        | "admin"
+        | "service_client"
+        | "superviseur"
+        | "comptable"
+        | "controle_qualite"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -891,6 +1151,13 @@ export const Constants = {
   public: {
     Enums: {
       app_role: ["admin", "client"],
+      internal_role: [
+        "admin",
+        "service_client",
+        "superviseur",
+        "comptable",
+        "controle_qualite",
+      ],
     },
   },
 } as const
