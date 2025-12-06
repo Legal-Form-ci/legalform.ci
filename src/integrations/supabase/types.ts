@@ -385,36 +385,45 @@ export type Database = {
           district: string | null
           founder_name: string
           id: string
+          logo_url: string | null
           name: string
+          photo_url: string | null
           rating: number | null
           region: string
           show_publicly: boolean | null
           testimonial: string | null
           type: string
+          website: string | null
         }
         Insert: {
           created_at?: string
           district?: string | null
           founder_name: string
           id?: string
+          logo_url?: string | null
           name: string
+          photo_url?: string | null
           rating?: number | null
           region: string
           show_publicly?: boolean | null
           testimonial?: string | null
           type: string
+          website?: string | null
         }
         Update: {
           created_at?: string
           district?: string | null
           founder_name?: string
           id?: string
+          logo_url?: string | null
           name?: string
+          photo_url?: string | null
           rating?: number | null
           region?: string
           show_publicly?: boolean | null
           testimonial?: string | null
           type?: string
+          website?: string | null
         }
         Relationships: []
       }
