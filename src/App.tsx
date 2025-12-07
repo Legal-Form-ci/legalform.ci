@@ -23,6 +23,7 @@ import PaymentsDashboard from "./pages/admin/PaymentsDashboard";
 import UnifiedDashboard from "./pages/admin/UnifiedDashboard";
 import NewDashboard from "./pages/admin/NewDashboard";
 import CompaniesManagement from "./pages/admin/CompaniesManagement";
+import CompanyDetail from "./pages/admin/CompanyDetail";
 import TeamManagement from "./pages/admin/TeamManagement";
 import AdminSettings from "./pages/admin/AdminSettings";
 import InitialSetup from "./pages/admin/InitialSetup";
@@ -85,6 +86,7 @@ const App = () => (
           <Route path="/admin/dashboard" element={<NewDashboard />} />
           <Route path="/admin/old-dashboard" element={<UnifiedDashboard />} />
           <Route path="/admin/companies" element={<CompaniesManagement />} />
+          <Route path="/admin/company/:id" element={<CompanyDetail />} />
           <Route path="/admin/team" element={<TeamManagement />} />
           <Route path="/admin/settings" element={<AdminSettings />} />
           <Route path="/admin/payments" element={<PaymentsDashboard />} />
